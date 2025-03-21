@@ -11,11 +11,13 @@ void insertion_sort_list(listint_t **list)
 {
 	int swap;
 	listint_t *first, *second;
+	listint_t *temp;
 
-	listint_t *temp = *list;
-
-	if (!*list || !list)
+	if (!list || !*list)
 		return;
+
+	temp = *list;
+
 	while (temp)
 	{
 		swap = 0;
