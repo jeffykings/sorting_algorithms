@@ -14,6 +14,8 @@ void insertion_sort_list(listint_t **list)
 
 	listint_t *temp = *list;
 
+	if (!*list || !list)
+		return;
 	while (temp)
 	{
 		swap = 0;
