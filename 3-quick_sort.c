@@ -80,6 +80,6 @@ void swap(int *array, int *first, int *second, int size)
 	temp = *first;
 	*first = *second;
 	*second = temp;
-	if (second != first)
+	if (*second != *first)
 		print_array(array, size);
 }
