@@ -19,6 +19,7 @@ void quick_sort(int *array, size_t size)
  * @array: array to be recurrsively called
  * @low: the smallest index in any partition
  * @high: the highest partition in any partition
+ * @size:  size of the array
  */
 
 void quick_sort_recur(int *array, int low, int high, int size)
@@ -35,10 +36,11 @@ void quick_sort_recur(int *array, int low, int high, int size)
 
 /**
  * partition - partitions the array using Lomuto scheme ie the highest index
- * 
+ *
  * @array: array to be recurrsively called
  * @low: the smallest index in any partition
  * @high: the highest partition in any partition
+ * @size: size of the array
  *
  * Return: the index of the pivot element always
  */
@@ -65,8 +67,10 @@ int partition(int *array, int low, int high, int size)
 /**
  * swap - swaps to element in different postions
  *
+ * @array: the array to be sorted
  * @first: the pointer to the first element to be swapped
  * @second: the pointer to the second element to be swapped
+ * @size: size of the array
  */
 
 void swap(int *array, int *first, int *second, int size)
