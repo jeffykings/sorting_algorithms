@@ -13,6 +13,9 @@ void shell_sort(int *array, size_t size)
 	size_t gap, j;
 	int i;
 
+	if (size <= 1)
+		return;
+
 	gap = 1;
 
 	/*generating Knuth sequence*/
