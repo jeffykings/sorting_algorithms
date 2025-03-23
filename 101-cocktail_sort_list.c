@@ -7,80 +7,72 @@
  * @list: the doubly linked list to be sorted
  */
 
- void cocktail_sort_list(listint_t **list)
+void cocktail_sort_list(listint_t **list)
 {
-	int swap, i, j, size, counter;
+	int swap, i, j, size;
 
 	listint_t *temp = *list;
 
 	if (!temp)
 		return;
-
-	swap = 0;
+	swap = 1;
 	size = 0;
-	counter = 0;
-
 	while (temp)
 	{
 		temp = temp->next;
 		size++;
 	}
-	temp *list;
+	temp = *list;
 
 	while (swap)
 	{
-		for (i = counter; i < size - counter; i++)
+		for (i = 1; i <= size - 1; i++)
 		{
 			if (temp->n > temp->next->n)
 			{
-				first = temp;
-				second temp->next;
-
-				if (first->prev != NULL)
-					first->prev->next = second;
-				else
-					*list = second;
-
-				if (second->next != NULL)
-					second->next->prev = first;
-
-				first->next = second->next;
-				second->prev = first->prev;
-				first->prev = second;
-				second->next = first;
+				swap_list(list, temp, temp->next);
 				swap = 1;
-			}
-			temp = temp->next;
+			} else
+				temp = temp->next;
 		}
-
 		if (swap == 0)
 			break;
 		swap = 0;
-		counter++;
 		temp = temp->prev;
-
-		for (j = i - counter; j >= 0; j--)
+		for (j = size - 2; j > 0; j--)
 		{
 			if (temp->n < temp->prev->n)
 			{
-				first = temp->prev;
-				second temp;
-
-				if (first->prev != NULL)
-					first->prev->next = second;
-				else
-					*list = second;
-
-				if (second->next != NULL)
-					second->next->prev = first;
-
-				first->next = second->next;
-				second->prev = first->prev;
-				first->prev = second;
-				second->next = first;
+				swap_list(list, temp->prev, temp);
 				swap = 1;
-			}
-			temp = temp->prev;
+			} else
+				temp = temp->prev;
 		}
 	}
+}
+
+/**
+ * swap_list - used to swap a doubly linked list
+ *
+ * @list: the header pointing to the start of the doubly
+ * linked list to be swapped
+ * @first: the pointer to the first node to be swapped
+ * @second: the pointer to the second node to be swapped
+ */
+
+void swap_list(listint_t **list, listint_t *first, listint_t *second)
+{
+	if (first->prev != NULL)
+		first->prev->next = second;
+	else
+		*list = second;
+
+	if (second->next != NULL)
+	second->next->prev = first;
+
+	first->next = second->next;
+	second->prev = first->prev;
+	first->prev = second;
+	second->next = first;
+	print_list(*list);
 }
