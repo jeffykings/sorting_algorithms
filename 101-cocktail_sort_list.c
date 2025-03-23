@@ -10,11 +10,11 @@
 void cocktail_sort_list(listint_t **list)
 {
 	int swap, i, j, size;
+	listint_t *temp;
 
-	listint_t *temp = *list;
-
-	if (!temp)
+	if (list == NULL || *list == NULL)
 		return;
+	temp = *list;
 	swap = 1;
 	size = 0;
 	while (temp)
