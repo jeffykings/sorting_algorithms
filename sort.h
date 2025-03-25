@@ -32,5 +32,10 @@ void swap_shell(int *first, int *second);
 void cocktail_sort_list(listint_t **list);
 void swap_list(listint_t **list, listint_t *first, listint_t *second);
 void counting_sort(int *array, size_t size);
+void merge_sort(int *array, size_t size);
+void merge_sorter(int *array, int lb, int ub);
+void merge(int *array, int lb, int mid, int ub);
+void print(int *array, int lb, int ub);
+void init_print(int *array, int lb, int mid, int ub);
 
 #endif
