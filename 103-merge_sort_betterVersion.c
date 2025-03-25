@@ -10,31 +10,19 @@
 
 void merge_sort(int *array, size_t size)
 {
-	int *temp_sorted;
-
 	if (array != NULL && size > 2)
-	{
-		temp_sorted = malloc(size * sizeof(int));
-
-		if (temp_sorted == NULL)
-			return;
-
-		merge_sorter(array, temp_sorted,  0, size - 1);
-
-		free(temp_sorted);
-	}
+		merge_sorter(array, 0, size - 1);
 }
 
 /**
  * merge_sorter - implements the merge_sort
  *
  * @array: the array to be sorted
- * @temp_sorted: temporal memory for sorted elements
  * @lb: the lower bound of a particular half
  * @ub: the upper bound of a particular half
  */
 
-void merge_sorter(int *array, int *temp_sorted, int lb, int ub)
+void merge_sorter(int *array, int lb, int ub)
 {
 	int mid;
 
@@ -52,9 +40,9 @@ void merge_sorter(int *array, int *temp_sorted, int lb, int ub)
 		 * mid = (ub + lb) / 2
 		 */
 
-		merge_sorter(array, temp_sorted, lb, mid);
-		merge_sorter(array, temp_sorted, mid + 1, ub);
-		merge(array, temp_sorted, lb, mid, ub);
+		merge_sorter(array, lb, mid);
+		merge_sorter(array, mid + 1, ub);
+		merge(array, lb, mid, ub);
 	}
 }
 
@@ -62,21 +50,21 @@ void merge_sorter(int *array, int *temp_sorted, int lb, int ub)
  * merge - merges the sorted cells
  *
  * @array: the array to be sorted
- * @temp_sorted: temporal memory for sorted elements
  * @lb: the lower bound of a particular half
  * @mid: the middle of a particular half
  * @ub: the upper bound of a particular half
  */
 
-void merge(int *array, int *temp_sorted, int lb, int mid, int ub)
+void merge(int *array, int lb, int mid, int ub)
 {
-	int i, j, k;
+	int *temp_sorted, i, j, k;
 
+	temp_sorted = malloc((ub + 1) * sizeof(int));
+	if (temp_sorted == NULL)
+		return;
 	init_print(array, lb, mid, ub);
-
 	i = k = lb;
 	j = mid + 1;
-
 	while (i <= mid && j <= ub)
 	{
 		if (array[i] <= array[j])
@@ -106,9 +94,9 @@ void merge(int *array, int *temp_sorted, int lb, int mid, int ub)
 	}
 	printf("[Done]: ");
 	print(temp_sorted, lb, ub);
-
 	for (i = lb; i <= ub; i++)
 		array[i] = temp_sorted[i];
+	free(temp_sorted);
 }
 
 /**
