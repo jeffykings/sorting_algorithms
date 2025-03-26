@@ -61,8 +61,8 @@ void heapify(int *array, int size, int large, int const_array_size)
 	if (large != i)
 	{
 		heap_swap(array, i, large);
-		heapify(array, size, large, const_array_size);
 		print_array(array, const_array_size);
+		heapify(array, size, large, const_array_size);
 	}
 }
 
