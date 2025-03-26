@@ -37,5 +37,8 @@ void merge(int *array, int *temp_sorted, int lb, int mid, int ub);
 void merge_sorter(int *array, int *temp_sorted, int lb, int ub);
 void print(int *array, int lb, int ub);
 void init_print(int *array, int lb, int mid, int ub);
+void heap_sort(int *array, size_t size);
+void heap_swap(int *array, int first, int second);
+void heapify(int *array, int size, int large, int const_array_size);
 
 #endif
