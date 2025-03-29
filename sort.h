@@ -43,5 +43,9 @@ void heapify(int *array, int size, int large, int const_array_size);
 void radix_sort(int *array, size_t size);
 int get_max(int *array, size_t size);
 void counter_radix_sort(int *array, int size, int pos);
+void quick_sort_hoare(int *array, size_t size);
+void quick_sorter_hoare(int *array, int lb, int ub, int size);
+int hoare_partition(int *array, int lb, int ub, int size);
+void hoare_swap(int *first, int *end);
 
 #endif
