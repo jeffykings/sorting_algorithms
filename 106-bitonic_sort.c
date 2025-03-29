@@ -7,6 +7,8 @@ void bitonic_sort(int *array, size_t size)
 
 void bitonic_sorter(int *array, int low, int high, int direction)
 {
+	int k;
+
 	if (high > 1)
 	{
 		k = (high  + 1 - low) / 2;
@@ -19,7 +21,7 @@ void bitonic_sorter(int *array, int low, int high, int direction)
 
 void bitonic_merge(int *array, int low, int high, int direction)
 {
-	int i;
+	int i, distance;
 
 	if (high > 1)
 	{
@@ -29,11 +31,19 @@ void bitonic_merge(int *array, int low, int high, int direction)
 		{
 			if (direction == (array[i] > array[i + distance]))
 			{
-				bitonic_swap(array[i], array[i + distance]);
+				bitonic_swap(&array[i], &array[i + distance]);
 			}
 		}
 		
 		bitonic_merge(array, low, distance, direction);
 		bitonic_merge(array, distance, high - low, direction);
 	}
+}
+
+void bitonic_swap(int *first, int *second)
+{
+	int temp;
+	temp = *first;
+	*first = *second;
+	*second = temp;
 }
